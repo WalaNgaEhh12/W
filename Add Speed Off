@@ -1,0 +1,11 @@
+_G.AscensionFunctions = false
+while _G.AscensionFunctions = true
+wait(0.5)
+delay(0.5, function()
+local args = {
+    [1] = "addSpeed"
+}
+
+game:GetService("ReplicatedStorage").Remotes.AscensionFunctions:InvokeServer(unpack(args))
+end)
+end
