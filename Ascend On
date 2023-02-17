@@ -1,0 +1,11 @@
+_G.AscensionFunctions = true
+while _G.AscensionFunctions == true do
+wait(1)
+delay(1, function()
+local args = {
+    [1] = "ascend"
+}
+
+game:GetService("ReplicatedStorage").Remotes.AscensionFunctions:InvokeServer(unpack(args))
+end)
+end
