@@ -1,5 +1,5 @@
 _G.AscensionFunctions = true
-while _G.AscensionFunctions == true
+while _G.AscensionFunctions == true do
 wait(0.5)
 delay(0.5, function()
 local args = {
