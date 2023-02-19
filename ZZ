@@ -1,12 +1,10 @@
 _G.SkillPOST = false
 while _G.SkillPOST == true do
 wait()
-delay(0, function()
 local args = {
     [1] = "useSkill",
     [2] = "Keybind3"
 }
 
 game:GetService("ReplicatedStorage").Remotes.SkillPOST:FireServer(unpack(args))
-end)
 end
