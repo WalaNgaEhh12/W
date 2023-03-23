@@ -1,0 +1,89 @@
+while wait(54.8) do
+delay(1, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3882, -30, 820) --1st
+end)
+delay(2, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3849, -30, 807) --2nd
+end)
+delay(3, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3840, -30, 842) --3rd
+end)
+delay(4, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3851, -30, 868) --4th
+end)
+delay(5, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3846, -30, 899) --5th
+end)
+delay(7, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3801, -30, 837) --6th
+end)
+delay(9, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3760, -28, 836) --7th
+end)
+delay(11, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3726, -28, 821) --8th
+end)
+delay(13, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3671, -28, 802) --9th
+end)
+delay(15.4, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3643, -27, 789) --10th
+end)
+delay(18.5, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3695, -30, 921) --11th
+end)
+delay(21, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3695, -30, 964) --12th
+end)
+delay(24, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3697, -30, 1005) --13th
+end)
+delay(27, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3684, -30, 1040) --14th
+end)
+delay(28, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3685, -30, 1088) --15th
+end)
+delay(31, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3646, -30, 1102) --16th
+end)
+delay(34.3, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3613, -30, 1075) --17th
+end)
+delay(36, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3599, -30, 1018) --18th
+end)
+delay(37, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3604, -30, 976) --19th
+end)
+delay(38, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3650, -30, 980) --20th
+end)
+delay(40.5, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3693, -30, 963) --21th
+end)
+delay(44, function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3694, -30, 919) --22nd
+end)
+delay(47, function()
+local PathfindingService = game:GetService("PathfindingService")
+local Players = game:GetService("Players")
+
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:FindFirstChildOfClass("Humanoid")
+
+local target = Vector3.new(-3882, -30, 820) -- Replace with the target position
+
+local path = PathfindingService:CreatePath()
+path:ComputeAsync(character.HumanoidRootPart.Position, target)
+
+if path.Status == Enum.PathStatus.Success then
+    local waypoints = path:GetWaypoints()
+    for i, waypoint in ipairs(waypoints) do
+        humanoid:MoveTo(waypoint.Position)
+        humanoid.MoveToFinished:Wait()
+    end
+end
+end)
+end
