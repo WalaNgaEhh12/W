@@ -1,0 +1,90 @@
+delay(1, function()
+local chests = game:GetService("Workspace").Ignore.WildChests:GetChildren()
+
+for i, chest in ipairs(chests) do
+    local part = chest.Root
+
+    local billboardGui = Instance.new("BillboardGui")
+    billboardGui.Enabled = true
+    billboardGui.AlwaysOnTop = true
+    billboardGui.LightInfluence = 0
+    billboardGui.Name = "ESP"
+    billboardGui.Size = UDim2.new(1, 0, 1, 0)
+    billboardGui.StudsOffset = Vector3.new(0, 2, 0)
+    billboardGui.Parent = part
+
+    local textLabel = Instance.new("TextLabel")
+    textLabel.BackgroundTransparency = 1
+    textLabel.Position = UDim2.new(0, 0, 0, 0)
+    textLabel.Size = UDim2.new(1, 0, 1, 0)
+    textLabel.Font = Enum.Font.SourceSans
+    textLabel.TextColor3 = Color3.new(255, 0 ,0)
+    textLabel.TextScaled = false
+    textLabel.TextSize = 15
+    textLabel.TextStrokeTransparency = 6
+    textLabel.Text = "Wild Chest"
+    textLabel.Parent = billboardGui
+
+    local frame = Instance.new("Frame")
+    frame.BackgroundTransparency = 0.5
+    frame.BorderSizePixel = 0
+    frame.Size = UDim2.new(1.1, 0, 0, 2)
+    frame.Position = UDim2.new(-0.05, 0, 0.5, 0)
+    frame.AnchorPoint = Vector2.new(0, 0.5)
+    frame.BackgroundColor3 = Color3.new(1, 0, 0)
+    frame.Parent = billboardGui
+end
+end)
+
+delay(2, function()
+local player = game:GetService("Players").LocalPlayer
+local camera = game:GetService("Workspace").CurrentCamera
+local chests = game:GetService("Workspace").Ignore.WildChests:GetChildren()
+
+for i, chest in ipairs(chests) do
+    local part = chest.Root
+
+    local boxHandle = Instance.new("BoxHandleAdornment")
+    boxHandle.Size = part.Size
+    boxHandle.Adornee = part
+    boxHandle.AlwaysOnTop = true
+    boxHandle.ZIndex = 10
+    boxHandle.Transparency = 0.5
+    boxHandle.Color3 = Color3.new(1, 0, 0)
+    boxHandle.Parent = part
+
+    local distanceGui = Instance.new("BillboardGui")
+    distanceGui.Enabled = true
+    distanceGui.AlwaysOnTop = true
+    distanceGui.Name = "Distance"
+    distanceGui.Size = UDim2.new(0, 100, 0, 50)
+    distanceGui.StudsOffset = Vector3.new(0, 6, 0)
+    distanceGui.Parent = part
+
+    local distanceLabel = Instance.new("TextLabel")
+    distanceLabel.BackgroundTransparency = 1
+    distanceLabel.Position = UDim2.new(0, 0, 0, 0)
+    distanceLabel.Size = UDim2.new(1, 0, 1, 0)
+    distanceLabel.Font = Enum.Font.SourceSans
+    distanceLabel.TextColor3 = Color3.new(255, 1, 1)
+    distanceLabel.TextScaled = false
+    distanceLabel.TextSize = 14
+    distanceLabel.Text = "Wild Chest"
+    distanceLabel.Parent = distanceGui
+
+    local function updateDistance()
+        local distance = (part.Position - camera.CFrame.p).Magnitude
+        if distance <= 2000 then
+            distanceLabel.Text = string.format("%.1f studs", distance)
+            boxHandle.Visible = true
+            distanceGui.Enabled = true
+        else
+            boxHandle.Visible = false
+            distanceGui.Enabled = false
+        end
+    end
+
+    updateDistance()
+    game:GetService("RunService").RenderStepped:Connect(updateDistance)
+end
+end)
