@@ -10,7 +10,7 @@ for i, chest in ipairs(chests) do
     billboardGui.LightInfluence = 0
     billboardGui.Name = "ESP"
     billboardGui.Size = UDim2.new(1, 0, 1, 0)
-    billboardGui.StudsOffset = Vector3.new(0, 6, 0)
+    billboardGui.StudsOffset = Vector3.new(0, 2, 0)
     billboardGui.Parent = part
 
     local textLabel = Instance.new("TextLabel")
@@ -74,7 +74,7 @@ for i, chest in ipairs(chests) do
 
     local function updateDistance()
         local distance = (part.Position - camera.CFrame.p).Magnitude
-        if distance <= 2000 then
+        if distance <= 1200 then
             distanceLabel.Text = string.format("%.1f studs", distance)
             boxHandle.Visible = true
             distanceGui.Enabled = true
